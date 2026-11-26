@@ -1,0 +1,8 @@
+torch>=2.1
+numpy
+scipy
+matplotlib
+pandas
+pillow
+gradio>=4.0
+jupyter

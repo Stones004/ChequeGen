@@ -1,0 +1,239 @@
+{
+ "device": "cuda",
+ "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+ "n_params": 3689473,
+ "train_minutes": 46.14282685518265,
+ "cfg": {
+  "T": 1000,
+  "beta_start": 0.0001,
+  "beta_end": 0.02,
+  "channels": [
+   64,
+   128,
+   256
+  ],
+  "batch_size": 256,
+  "lr": 0.0005,
+  "warmup": 500,
+  "train_steps": 20000,
+  "ema_decay": 0.9995,
+  "amp": true,
+  "p_uncond": 0.1,
+  "guidance": 1.5,
+  "n_eval": 2000,
+  "n_seeds": 3,
+  "sample_batch": 500,
+  "n_synth_per_class": 500,
+  "guidance_sweep": [
+   0.0,
+   0.5,
+   1.0,
+   1.5,
+   3.0
+  ],
+  "low_real_per_class": 50
+ },
+ "evaluator_acc": 98.80999982357025,
+ "floor": {
+  "fid": 4.082866326319618,
+  "precision": 0.8930000066757202,
+  "recall": 0.9049999713897705
+ },
+ "benchmark": [
+  {
+   "sampler": "DDPM (baseline)",
+   "kind": "ddpm",
+   "steps": 1000,
+   "ms": 344.405615568161,
+   "fid": 13.66721422441818,
+   "fid_sd": 0.3596671766547799,
+   "precision": 0.9256666700045267,
+   "recall": 0.7488333384195963,
+   "recall_sd": 0.006110113309081223,
+   "label_acc": 99.93333419164021,
+   "speedup": 1.0,
+   "hours_per_lakh": 9.566822654671139
+  },
+  {
+   "sampler": "DDIM",
+   "kind": "ddim",
+   "steps": 100,
+   "ms": 34.48317265510559,
+   "fid": 18.106638943415117,
+   "fid_sd": 0.24993513064372197,
+   "precision": 0.9229999979337057,
+   "recall": 0.6939999858538309,
+   "recall_sd": 0.026556530916813155,
+   "label_acc": 99.98333354791005,
+   "speedup": 9.987642929867365,
+   "hours_per_lakh": 0.9578659070862664
+  },
+  {
+   "sampler": "DDIM",
+   "kind": "ddim",
+   "steps": 50,
+   "ms": 17.245734294255573,
+   "fid": 18.1183723990686,
+   "fid_sd": 0.27815780468175966,
+   "precision": 0.9279999931653341,
+   "recall": 0.6835000117619833,
+   "recall_sd": 0.025548962097778082,
+   "label_acc": 99.98333354791005,
+   "speedup": 19.970481377698135,
+   "hours_per_lakh": 0.4790481748404326
+  },
+  {
+   "sampler": "DDIM",
+   "kind": "ddim",
+   "steps": 20,
+   "ms": 6.905961036682129,
+   "fid": 18.562240445400676,
+   "fid_sd": 0.3378924952374818,
+   "precision": 0.9396666685740153,
+   "recall": 0.6461666623751322,
+   "recall_sd": 0.019857845492614292,
+   "label_acc": 100.0,
+   "speedup": 49.870773052265264,
+   "hours_per_lakh": 0.19183225101894802
+  },
+  {
+   "sampler": "DDIM",
+   "kind": "ddim",
+   "steps": 10,
+   "ms": 3.4586801131566367,
+   "fid": 19.182302143566478,
+   "fid_sd": 0.49747900821006313,
+   "precision": 0.9584999879201254,
+   "recall": 0.5764999985694885,
+   "recall_sd": 0.019519208177515197,
+   "label_acc": 100.0,
+   "speedup": 99.57718097665645,
+   "hours_per_lakh": 0.09607444758768435
+  },
+  {
+   "sampler": "DPM-Solver++",
+   "kind": "dpm",
+   "steps": 20,
+   "ms": 6.905570189158122,
+   "fid": 18.06418868366624,
+   "fid_sd": 0.2772650882487933,
+   "precision": 0.9198333422342936,
+   "recall": 0.70033331712087,
+   "recall_sd": 0.026001595559742286,
+   "label_acc": 99.98333354791005,
+   "speedup": 49.873595682060326,
+   "hours_per_lakh": 0.19182139414328117
+  },
+  {
+   "sampler": "DPM-Solver++",
+   "kind": "dpm",
+   "steps": 10,
+   "ms": 3.4570380449295044,
+   "fid": 17.19824872311794,
+   "fid_sd": 0.39692768238204446,
+   "precision": 0.9351666768391927,
+   "recall": 0.6738333304723104,
+   "recall_sd": 0.025769826081955008,
+   "label_acc": 100.0,
+   "speedup": 99.62447942200303,
+   "hours_per_lakh": 0.09602883458137512
+  },
+  {
+   "sampler": "DPM-Solver++",
+   "kind": "dpm",
+   "steps": 5,
+   "ms": 1.7300457954406738,
+   "fid": 17.525260777453923,
+   "fid_sd": 0.5671781944958683,
+   "precision": 0.9703333179155985,
+   "recall": 0.5346666574478149,
+   "recall_sd": 0.01950853279484471,
+   "label_acc": 100.0,
+   "speedup": 199.0731207669764,
+   "hours_per_lakh": 0.04805682765112983
+  }
+ ],
+ "benchmark_text": "\n**Interpretation of the benchmark** (3 seeds \u00d7 2000 images per row, CUDA \u2014 NVIDIA GeForce RTX 4050 Laptop GPU).\n\n1. **Speed \u2014 the bottleneck is removed.** DDIM-50 is **20.0\u00d7 faster** than the 1000-step baseline (17.25 vs 344.41 ms per image); DPM-Solver++-20 is **50\u00d7** faster and DPM-Solver++-5 **199\u00d7**. Generating 1,00,000 cheque digits takes **9.57 h with DDPM** but **28.7 min with DDIM-50** and **11.5 min with DPM-Solver++-20**.\n2. **Quality.** FID of DDIM-50 (18.1 \u00b1 0.3) is worse than the baseline (13.7 \u00b1 0.4); DPM-Solver++-20 scores 18.1. Label accuracy stays between 99.9% and 100.0% for every sampler, so conditioning is never lost. \"About the same\" means the gap is within two seed standard deviations.\n3. **No few-step sampler matched the baseline FID in this run**; DDIM-50 is used as the reference default.\n4. **DDIM vs DPM-Solver++ at 10 steps:** FID 19.2 vs 17.2, recall 0.576 vs 0.674. The second-order solver keeps more diversity at the same cost per step.\n5. **Realism vs diversity.** Precision is high for all samplers (\u2265 0.92), but recall (0.53\u20130.75) is well below real data (0.90). Generated digits look real, but they do not yet cover every way people write \u2014 the diversity limitation studied in Section 8.\n",
+ "guidance_sweep": [
+  {
+   "w": 0.0,
+   "fid": 5.099806829256977,
+   "precision": 0.8585000038146973,
+   "recall": 0.887499988079071,
+   "label_acc": 97.18000054359436,
+   "ocr_acc": 97.36999988555908,
+   "gen_seconds": 34.47033405303955
+  },
+  {
+   "w": 0.5,
+   "fid": 10.443394880663618,
+   "precision": 0.9014999866485596,
+   "recall": 0.828000009059906,
+   "label_acc": 99.86000180244446,
+   "ocr_acc": 96.05999946594238,
+   "gen_seconds": 34.445844411849976
+  },
+  {
+   "w": 1.0,
+   "fid": 17.50345275792415,
+   "precision": 0.9154999852180481,
+   "recall": 0.7584999799728394,
+   "label_acc": 100.0,
+   "ocr_acc": 94.92000043392181,
+   "gen_seconds": 34.45599722862244
+  },
+  {
+   "w": 1.5,
+   "fid": 23.31315672718688,
+   "precision": 0.9225000143051147,
+   "recall": 0.7074999809265137,
+   "label_acc": 100.0,
+   "ocr_acc": 93.93999993801117,
+   "gen_seconds": 34.42574119567871
+  },
+  {
+   "w": 3.0,
+   "fid": 33.87229193386884,
+   "precision": 0.9279999732971191,
+   "recall": 0.6274999976158142,
+   "label_acc": 100.0,
+   "ocr_acc": 91.99999988079071,
+   "gen_seconds": 34.44219207763672
+  }
+ ],
+ "acc_real_same_size": 97.80000030994415,
+ "best_w": 0.0,
+ "sweep_text": "\n**Interpretation of the guidance sweep.**\n\n* **Realism vs diversity.** As w grows from 0.0 to 3.0, precision moves from 0.859 to 0.928 and recall moves from 0.887 to 0.627. Guidance clearly buys realism with diversity.\n* **Downstream choice.** The reader trained on synthetic digits is most accurate at **w = 0.0: 97.37%**, compared with 93.94% at the version-1 setting w = 1.5. A reader trained on the same number of **real** digits reaches 97.80%.\n* **Gap to real data:** 3.9 points at w = 1.5 \u2192 **0.4 points** at the tuned w. Tuning guidance for the task closes part of the diversity gap.\n* FID (n = 2000) also changes from 23.3 at w = 1.5 to 5.1 at w = 0.0; the Section 7 benchmark used w = 1.5 throughout.\n* Label accuracy of the generated digits at w = 0.0 is 97.2% (vs 100.0% at the most accurate w). The best w lies at the lower edge of the sweep (w = 0, the plain conditional model without guidance): for OCR training data, diversity matters more than the neatness guidance buys, even though a few generated digits are mis-shaped.\n",
+ "augmentation": [
+  {
+   "dataset": "A. Small real",
+   "n_real": 500,
+   "n_synthetic": 0,
+   "acc": 93.09333304564159,
+   "acc_sd": 0.11115523570712295
+  },
+  {
+   "dataset": "B. Synthetic only",
+   "n_real": 0,
+   "n_synthetic": 5000,
+   "acc": 97.34000007311504,
+   "acc_sd": 0.08286546062193885
+  },
+  {
+   "dataset": "C. Small real + synthetic",
+   "n_real": 500,
+   "n_synthetic": 5000,
+   "acc": 97.49000012874603,
+   "acc_sd": 0.045460981863021103
+  },
+  {
+   "dataset": "D. Large real (upper bound)",
+   "n_real": 5000,
+   "n_synthetic": 0,
+   "acc": 97.85666624704997,
+   "acc_sd": 0.016996863572125043
+  }
+ ],
+ "augmentation_text": "\n**Interpretation of the augmentation study** (mean \u00b1 sd over 3 reader seeds).\n\n* With only **500 real digits**, the reader reaches **93.09%**.\n* Adding **5000 ChequeGen digits** to those same real digits gives **97.49%** (+4.40 points) **without collecting a single extra customer cheque**.\n* This recovers **92%** of the gain that 5000 real digits would bring (97.86%).\n* Synthetic only: 97.34%. The mix is about the same as the better single source (97.34%): the difference is within two reader-seed standard deviations.\n",
+ "summary_text": "\n### What the project shows\n* **DDIM speeds up diffusion sampling without retraining**: 20\u00d7 faster at 50 steps, with quality worse than the 1000-step baseline.\n* **DPM-Solver++** pushes this to **50\u00d7 at 20 steps** and **199\u00d7 at 5 steps**, still with one network call per step.\n* **Conditioning plus classifier-free guidance** makes the generator controllable: label accuracy 99.9\u2013100.0% across samplers.\n* **Diversity is the main remaining limitation, not speed**: recall 0.75 vs 0.90 for real data. Tuning guidance changed synthetic-only OCR accuracy by +3.43 points, and adding synthetic digits to a small real set changed accuracy by +4.40 points.\n\n### Version-1 limitations and how they were addressed\n\n| Version-1 limitation | What version 2 did | Result in this run |\n|---|---|---|\n| Small model, short CPU training | GPU: NVIDIA GeForce RTX 4050 Laptop GPU, 3,689,473-parameter U-Net, 20,000 steps, mixed precision | DDPM-1000 FID 13.7; label accuracy 99.9% |\n| FID from one run of 500 images; FID mixes realism and diversity | 2000 images \u00d7 3 seeds, mean \u00b1 sd; precision/recall added | FID sd \u2248 0.37; recall exposes the diversity gap (0.75 vs 0.90 real) |\n| Speed: DDIM still needs about 50 steps | DPM-Solver++(2M), a 2nd-order solver | DPM-Solver++-20: **50\u00d7 faster** (FID 18.1); DPM-Solver++-5: 199\u00d7 (FID 17.5) |\n| Synthetic-only OCR below real data | Guidance tuned for the downstream task (w = 0.0) | reader on synthetic only: 97.37% vs 97.80% on real data |\n| Unclear practical value | Synthetic data as augmentation for a small real set | 93.09% \u2192 **97.49%** with 5000 synthetic digits added |\n| MNIST is not real cheque handwriting | *Not addressed*: needs a cheque-amount dataset (e.g. CAR/LAR) | \u2014 |\n\n\n### Remaining limitations and future work\n* Train on real handwritten cheque-amount datasets (CAR/LAR) and generate whole amount strings, including commas and \u20b9.\n* Raise diversity further: stochastic DDIM (\u03b7 > 0), guidance that is strong only at mid-noise levels, or a larger model.\n* Distil to 1\u20134 steps (consistency models) for on-device generation.\n\n### References\n1. Ho, Jain & Abbeel (2020). *Denoising Diffusion Probabilistic Models.* NeurIPS.\n2. Song, Meng & Ermon (2021). *Denoising Diffusion Implicit Models.* ICLR.\n3. Lu et al. (2022). *DPM-Solver++: Fast Solver for Guided Sampling of Diffusion Probabilistic Models.* arXiv:2211.01095.\n4. Ho & Salimans (2022). *Classifier-Free Diffusion Guidance.* NeurIPS Workshop.\n5. Kynk\u00e4\u00e4nniemi et al. (2019). *Improved Precision and Recall Metric for Assessing Generative Models.* NeurIPS.\n6. Heusel et al. (2017). *GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium (FID).* NeurIPS.\n7. LeCun, Cortes & Burges. *The MNIST database of handwritten digits.*\n"
+}
